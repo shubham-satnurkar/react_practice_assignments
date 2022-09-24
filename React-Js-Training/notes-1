@@ -1,0 +1,161 @@
+--> Revice the Es 6 concepts 
+  -> let vs const 
+     -> let :- we define local scope of a variable within a scope.(if, for, function)
+       for(let i=1; i<=5; i++){
+           console.log(i)
+       }
+       console.log(i);//i is not defined 
+       ** The scope of var is global , only in case of function if we define any variable with var keyword inside a function , then it is a local for that function.
+       let x=10;
+       let x=20;// already define 
+       x=20;// we can change 
+    -> const :- constant (fixed)
+      const API_URL="http://abc.com/api";
+    -> Template Literal 
+       " " , ' ' 
+        --> backtrick (``)
+        eg:
+         let x=20;
+         let y=15;
+         let sum=x+y;
+         console.log(`The sum of ${x} and ${y} is ${sum}`)
+    -> arrow function (=>) (sort and concise)
+        let add=(a,b)=> (a+b);
+        let add=(a,b)=>{
+            //logic 
+            return (a+b)
+        }
+    -> spread operator and rest parameter 
+      -> spread operator :- it is used to copy or spread array or object values in new array and object (...)
+        eg:
+        let arr=[1,2,3];
+        let newArray=[...arr,5,6];// 1 2 3 5 6 
+        let obj={name:'anuj',age:23}
+        let newObj={...obj,name:'sumit',city:'noida'}
+     -> rest parameter (...) :- pass n number arguments in a function. and limitaion is that rest parameter is the last formal parameter of a function.
+        function myAdd(...args){
+             let sum=0;
+             args.forEach(val=> sum+=val);
+             return sum;
+        }
+        console.log(myAdd(2,3))
+        console.log(myAdd(2,3,4))
+        console.log(myAdd(2,3,4,5))
+    -> OOPS Features (memory management and reusability)
+       -> class and object , constructor 
+        class Car{
+                constructor(){
+                    this.speed=60;
+                }
+                acc(){
+                    this.speed+=50;
+                }
+                checkSpeed(){
+                    console.log(`The speed is ${this.speed}`)
+                }
+            }
+            const obj=new Car();
+            obj.checkSpeed();
+            obj.acc();
+            obj.checkSpeed();
+        -> getter and setter (get and set method)
+         class Person{
+            constructor(name){
+                this._name=name;
+            }
+            get name(){
+                return this._name;
+            }
+            set name(newName){
+                this._name=newName
+            }
+        }
+        const obj=new Person("sumit");
+        console.log(obj.name);
+        obj.name="amit";
+        console.log(obj.name);
+    -> computed property []
+       let pro="city";
+       let obj={
+           name:'anuj',
+           age:23,
+         [pro]:'noida'
+       }
+
+       eg:
+         let [state,setState]=useState({fname:'',lname:''})
+
+         let handler=(event)=>{
+             let {name,value}=event.target;
+             setState({...state,[name]:value})
+         }
+       <input type="text" name="fname" onChange={handler}/> 
+       <input type="text" name="lname" onChange={handler}/> 
+    --> Inheritance : (reusability) (extends and super)
+    eg:
+        class A {
+            abc(){
+                return "swasti";
+            }
+        }
+        class B extends A 
+        {
+            bca(){
+                let x="sumit";
+                ley y=super.abc();
+                console.log(`${x} and ${y} are best friend`);
+            }
+        }
+        const obj=new B;
+        obj.bca();
+  -> map , filter , reduce 
+  -> callback :- 
+      we have a problem callback hell (problem in error handling)
+
+        abc(){
+             bca(){
+                 zxc(){
+
+                 }
+             }
+        } 
+  -> promise :- used for asynchronous operations 
+    -> pending : first it goes to pending
+    -> fulfilled :- succesfull 
+    -> rejected :- unsuccesfull 
+      -> promise return 1 value at time 
+      -> promise are not cancellable 
+  eg:
+  -> fetch() :- to consume the APIs and it return promise 
+    eg:
+     const API="path";
+     fetch(API)
+     .then(res=> res.json())
+     .then(data=> data)
+     .catch(err=> err)
+     -> async | await 
+
+     let fetchData=async()=> {
+         try{
+        let res=await fetch("---");
+        let data=await res.json();
+        console.log(data)
+         }
+         catch(err){
+             console.log(err);
+         }
+     }
+
+    -> Iterators and Genrators Functions.
+    -> ToDo List
+    ->Fetch All JsonPlaceholder API
+    -> map and filter example
+
+    ->Tomorrow
+     -> React Js Introduction
+     ->Environmental Setup
+     -> How react app boot
+     -> Directory Structure
+     ->Components [Types of components]
+     ->Data Biniding
+     -> States and Props
